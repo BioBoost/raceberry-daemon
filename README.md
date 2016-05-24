@@ -50,3 +50,7 @@ You can always check the status using following command:
 ```shell
 systemctl status raceberry-daemon.service
 ```
+
+# TODO
+
+Make a symlink pointing to the service script in this repository. Makes it easier for updates (just pull and reboot). Also requires executable flag to be set for the service file inside git repo.
