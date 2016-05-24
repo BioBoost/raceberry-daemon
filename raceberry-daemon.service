@@ -1,0 +1,21 @@
+#!/bin/sh
+
+[Unit]
+Description=Daemonizer script for Raceberry Pi
+Before=systemd-user-sessions.service
+
+[Service]
+TimeoutStartSec=0
+WorkingDirectory=/home/pi/raceberry-daemon
+
+ExecStart=/usr/bin/ruby /home/pi/raceberry-daemon/server_control.rb start
+User=pi
+
+Type=forking
+RemainAfterExit=yes
+
+ExecStop=/usr/bin/ruby /home/pi/raceberry-daemon/server_control.rb stop
+User=pi
+
+[Install]
+WantedBy=multi-user.target

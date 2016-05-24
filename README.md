@@ -1,43 +1,38 @@
-# Fork to background
+# Raceberry Pi Daemonizer script for student script
+
+This will daemonize the latest ruby script dropped in the boot directory on the Desktop of a Raspberry Pi (pi account).
+
+## Starting and stopping manually
+
+### Fork to background
+
+```shell
 ruby server_control.rb start
+```
 
-# End the forked process that began with start
+### End the forked process that began with start
+
+```shell
 ruby server_control.rb stop
+```
 
-# Run without forking to background process
-# Will require a CTRL-C or a kill to end
+### Run without forking to background process
+Will require a CTRL-C or a kill to end
+
+```shell
 ruby server_control.rb run
-
-
+```
 
 # Systemd startup script:
 
-https://gauntface.com/blog/2015/12/02/start-up-scripts-for-raspbian
+Copy the 'raceberry-daemon.service' file to /etc/systemd/system and make it executable.
 
-Create the .service file in /etc/systemd/system
+Make sure to enable the service script
 
-```
-#!/bin/sh
-
-[Unit]
-Description=Student script for Raceberry Pi
-Before=systemd-user-sessions.service
-
-[Service]
-TimeoutStartSec=0
-
-ExecStart=/..../ruby /home/pi/student/server_control.rb status
-Type=oneshot
-RemainAfterExit=yes
-User=pi
-
-ExecStop=/...../ruby /home/pi/student/server_control.rb stop
-User=pi
-
-[Install]
-WantedBy=multi-user.target
+```shell
+sudo cp raceberry-daemon.service /etc/systemd/system
+sudo chmod +x /etc/systemd/system/raceberry-daemon.service
+sudo systemctl enable raceberry-daemon.service
 ```
 
-
-
-Some other source: https://bbs.archlinux.org/viewtopic.php?id=155538
+Restart the system and it should work
