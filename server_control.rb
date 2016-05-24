@@ -10,4 +10,8 @@ FileUtils::mkdir_p boot_dir
 latest_ruby_script = Dir.glob(File.join(boot_dir, '*.rb')).max { |a,b| File.ctime(a) <=> File.ctime(b) }
 
 # Fork daemon
-Daemons.run(latest_ruby_script, :backtrace => true) unless latest_ruby_script.nil?
+daemon_options = {
+  :backtrace  => true,
+  :log_output => true
+}
+Daemons.run(latest_ruby_script, daemon_options) unless latest_ruby_script.nil?
