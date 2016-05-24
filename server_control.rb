@@ -11,7 +11,7 @@ latest_ruby_script = Dir.glob(File.join(boot_dir, '*.rb')).max { |a,b| File.ctim
 
 # Fork daemon
 daemon_options = {
-  :backtrace  => true,
+  :backtrace  => false,
   :log_output => true
 }
 Daemons.run(latest_ruby_script, daemon_options) unless latest_ruby_script.nil?
