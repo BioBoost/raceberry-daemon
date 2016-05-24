@@ -1,4 +1,5 @@
 require 'daemons'
+require 'fileutils'
 
 boot_dir = '/home/pi/Desktop/boot/'
 

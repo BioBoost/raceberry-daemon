@@ -2,6 +2,12 @@
 
 This will daemonize the latest ruby script dropped in the boot directory on the Desktop of a Raspberry Pi (pi account).
 
+Make sure not to forget to do bundle install.
+
+```shell
+bundle install
+```
+
 ## Starting and stopping manually
 
 ### Fork to background
