@@ -43,6 +43,12 @@ sudo systemctl enable raceberry-daemon.service
 sudo systemctl start raceberry-daemon.service
 ```
 
+Or you can use the install script
+
+```shell
+./install
+```
+
 Restart the system and it should work
 
 You can always check the status using following command:
