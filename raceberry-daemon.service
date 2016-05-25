@@ -9,13 +9,13 @@ TimeoutStartSec=0
 WorkingDirectory=/home/pi/raceberry-daemon
 
 ExecStart=/usr/bin/ruby /home/pi/raceberry-daemon/server_control.rb start
-User=pi
+User=root
 
 Type=forking
 RemainAfterExit=yes
 
 ExecStop=/usr/bin/ruby /home/pi/raceberry-daemon/server_control.rb stop
-User=pi
+User=root
 
 [Install]
 WantedBy=multi-user.target
